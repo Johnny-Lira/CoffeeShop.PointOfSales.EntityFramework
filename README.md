@@ -1,0 +1,1 @@
+# CoffeeShop.PointOfSales.EntityFramework
