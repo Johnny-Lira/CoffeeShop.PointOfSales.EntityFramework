@@ -4,7 +4,7 @@ namespace CoffeeShop.PointOfSales.EntityFramework
 {
     internal class ProductService
     {
-        static internal Product GetProductOptionInput()
+        static internal Product? GetProductOptionInput()
         {
             var products = ProductController.GetProducts();
             var productsArray = products.Select(p => p.Name).ToArray();

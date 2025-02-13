@@ -2,7 +2,7 @@
 
 namespace CoffeeShop.PointOfSales.EntityFramework
 {
-    internal class ProductsContext : DbContext
+    public class ProductsContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

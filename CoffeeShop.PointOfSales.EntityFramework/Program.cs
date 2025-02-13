@@ -30,7 +30,10 @@ while (isRunning)
             break;
         case MenuOptions.ViewProduct:
             var product = ProductService.GetProductOptionInput();
-            UserInterface.ShowProduct(product);
+            if (product != null)
+                UserInterface.ShowProduct(product);
+            else
+                AnsiConsole.MarkupLine("[red]Product not found[/]");
             break;
         case MenuOptions.ViewAllProducts:
             var products = ProductController.GetProducts();

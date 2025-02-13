@@ -3,10 +3,10 @@ using Spectre.Console;
 
 namespace CoffeeShop.PointOfSales.EntityFramework
 {
-    internal class ProductController
+    public class ProductController
     {
 
-        internal static void AddProduct()
+        public static void AddProduct()
         {
             var name = AnsiConsole.Ask<string>("Enter the name of the product");
             using var db = new ProductsContext();
@@ -14,29 +14,29 @@ namespace CoffeeShop.PointOfSales.EntityFramework
             db.SaveChanges();
         }
 
-        internal static void DeleteProduct()
+        public static void DeleteProduct()
         {
             throw new NotImplementedException();
         }
 
-        internal static Product GetProductById( int id)
+        public static Product? GetProductById( int id)
         {
             using var db = new ProductsContext();
             var product = db.Products.SingleOrDefault(p => p.Id == id);
             return product;
         }
 
-        internal static void UpdateProduct()
+        public static void UpdateProduct()
         {
             throw new NotImplementedException();
         }
 
-        internal static void ViewProduct()
+        public static void ViewProduct()
         {
             throw new NotImplementedException();
         }
 
-        internal static List<Product> GetProducts()
+        public static List<Product> GetProducts()
         {
             using var db = new ProductsContext();
 
