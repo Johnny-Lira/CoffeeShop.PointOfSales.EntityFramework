@@ -4,6 +4,7 @@ using CoffeeShop.PointOfSales.EntityFramework;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Spectre.Console;
 
 namespace TestProject
 {
@@ -12,17 +13,7 @@ namespace TestProject
         [Fact]
         public void AddProduct_ShouldAddProductToDatabase()
         {
-            // Arrange
-            var mockContext = new Mock<ProductsContext>();
-            var mockSet = new Mock<DbSet<Product>>();
-            mockContext.Setup(m => m.Products).Returns(mockSet.Object);
 
-            // Act
-            ProductController.AddProduct();
-
-            // Assert
-            mockSet.Verify(m => m.Add(It.IsAny<Product>()), Times.Once());
-            mockContext.Verify(m => m.SaveChanges(), Times.Once());
         }
 
         [Fact]

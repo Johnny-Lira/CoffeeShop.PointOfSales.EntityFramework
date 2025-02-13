@@ -20,7 +20,7 @@ while (isRunning)
     switch (option)
     {
         case MenuOptions.AddProduct:
-            ProductController.AddProduct();
+            ProductController.AddProduct(AnsiConsole.Ask<string>("Enter the name of the product"));
             break;
         case MenuOptions.RemoveProduct:
             ProductController.DeleteProduct();

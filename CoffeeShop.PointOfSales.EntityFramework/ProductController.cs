@@ -6,9 +6,8 @@ namespace CoffeeShop.PointOfSales.EntityFramework
     public class ProductController
     {
 
-        public static void AddProduct()
+        public static void AddProduct(string name)
         {
-            var name = AnsiConsole.Ask<string>("Enter the name of the product");
             using var db = new ProductsContext();
             db.Add(new Product { Name = name });
             db.SaveChanges();
