@@ -13,7 +13,11 @@ namespace TestProject
         [Fact]
         public void AddProduct_ShouldAddProductToDatabase()
         {
+            var product = "Test Product";
+            ProductController.AddProduct(product);
 
+            var test = ProductController.GetProducts().Equals(product);
+            Assert.True(test);
         }
 
         [Fact]

@@ -13,9 +13,11 @@ namespace CoffeeShop.PointOfSales.EntityFramework
             db.SaveChanges();
         }
 
-        public static void DeleteProduct()
+        public static void DeleteProduct(Product product)
         {
-            throw new NotImplementedException();
+            using var db = new ProductsContext();
+            db.Remove(product);
+            db.SaveChanges();
         }
 
         public static Product? GetProductById( int id)

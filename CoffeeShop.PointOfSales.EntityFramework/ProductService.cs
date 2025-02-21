@@ -4,7 +4,34 @@ namespace CoffeeShop.PointOfSales.EntityFramework
 {
     internal class ProductService
     {
-        static internal Product? GetProductOptionInput()
+        internal static void InsertProduct()
+        {
+            ProductController.AddProduct(AnsiConsole.Ask<string>("Enter the name of the product"));
+
+        }
+
+        internal static void DeleteProduct()
+        {
+            var product = GetProductOptionInput() ?? throw new Exception("Null on delete product");
+            ProductController.DeleteProduct(product);
+        }
+
+        internal static void GetProducts()
+        {
+            var products = ProductController.GetProducts();
+            UserInterface.ShowProductTable(products);
+        }
+
+        internal static void GetProduct()
+        {
+            var product = GetProductOptionInput();
+            if (product != null)
+                UserInterface.ShowProduct(product);
+            else
+                AnsiConsole.MarkupLine("[red]Product not found[/]");
+        }
+
+        static private Product? GetProductOptionInput()
         {
             var products = ProductController.GetProducts();
             var productsArray = products.Select(p => p.Name).ToArray();

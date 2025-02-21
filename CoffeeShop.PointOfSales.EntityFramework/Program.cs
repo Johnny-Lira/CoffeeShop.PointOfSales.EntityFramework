@@ -10,7 +10,7 @@ while (isRunning)
             .Title("What do you want to do?")
             .PageSize(10)
             .AddChoices(MenuOptions.AddProduct,
-            MenuOptions.RemoveProduct,
+            MenuOptions.DeleteProduct,
             MenuOptions.UpdateProduct,
             MenuOptions.ViewProduct,
             MenuOptions.ViewAllProducts,
@@ -20,24 +20,19 @@ while (isRunning)
     switch (option)
     {
         case MenuOptions.AddProduct:
-            ProductController.AddProduct(AnsiConsole.Ask<string>("Enter the name of the product"));
+            ProductService.InsertProduct();
             break;
-        case MenuOptions.RemoveProduct:
-            ProductController.DeleteProduct();
+        case MenuOptions.DeleteProduct:
+            ProductService.DeleteProduct();
             break;
         case MenuOptions.UpdateProduct:
             ProductController.UpdateProduct();
             break;
         case MenuOptions.ViewProduct:
-            var product = ProductService.GetProductOptionInput();
-            if (product != null)
-                UserInterface.ShowProduct(product);
-            else
-                AnsiConsole.MarkupLine("[red]Product not found[/]");
+            ProductService.GetProduct();
             break;
         case MenuOptions.ViewAllProducts:
-            var products = ProductController.GetProducts();
-            UserInterface.ShowProductTable(products);
+            ProductService.GetProducts();
             break;
         case MenuOptions.Quit:
             isRunning = false;
@@ -50,7 +45,7 @@ while (isRunning)
 enum MenuOptions
 {
     AddProduct,
-    RemoveProduct,
+    DeleteProduct,
     UpdateProduct,
     ViewProduct,
     ViewAllProducts,
