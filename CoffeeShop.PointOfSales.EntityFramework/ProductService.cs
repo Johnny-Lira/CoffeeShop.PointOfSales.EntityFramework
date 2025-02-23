@@ -31,6 +31,18 @@ namespace CoffeeShop.PointOfSales.EntityFramework
                 AnsiConsole.MarkupLine("[red]Product not found[/]");
         }
 
+        internal static void UpdateProduct()
+        {
+            var product = GetProductOptionInput();
+            if (product != null)
+            {
+                product.Name = AnsiConsole.Ask<string>("Enter the new name of the product");
+                ProductController.UpdateProduct(product);
+            }
+            else
+                AnsiConsole.MarkupLine("[red]Product not found[/]");
+        }
+
         static private Product? GetProductOptionInput()
         {
             var products = ProductController.GetProducts();

@@ -26,7 +26,7 @@ while (isRunning)
             ProductService.DeleteProduct();
             break;
         case MenuOptions.UpdateProduct:
-            ProductController.UpdateProduct();
+            ProductService.UpdateProduct();
             break;
         case MenuOptions.ViewProduct:
             ProductService.GetProduct();

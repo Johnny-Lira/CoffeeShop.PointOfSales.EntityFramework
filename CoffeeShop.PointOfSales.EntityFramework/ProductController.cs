@@ -1,5 +1,4 @@
-﻿
-using Spectre.Console;
+﻿using Spectre.Console;
 
 namespace CoffeeShop.PointOfSales.EntityFramework
 {
@@ -27,11 +26,6 @@ namespace CoffeeShop.PointOfSales.EntityFramework
             return product;
         }
 
-        public static void UpdateProduct()
-        {
-            throw new NotImplementedException();
-        }
-
         public static void ViewProduct()
         {
             throw new NotImplementedException();
@@ -44,7 +38,13 @@ namespace CoffeeShop.PointOfSales.EntityFramework
             var products = db.Products.ToList<Product>();
 
             return products;
+        }
 
+        public static void UpdateProduct(Product product)
+        {
+            using var db = new ProductsContext();
+            db.Update(product);
+            db.SaveChanges();
         }
     }
 }
