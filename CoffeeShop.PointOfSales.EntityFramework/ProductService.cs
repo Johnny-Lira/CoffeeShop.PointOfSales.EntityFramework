@@ -12,8 +12,16 @@ namespace CoffeeShop.PointOfSales.EntityFramework
 
         internal static void DeleteProduct()
         {
-            var product = GetProductOptionInput() ?? throw new Exception("Null on delete product");
-            ProductController.DeleteProduct(product);
+            var product = GetProductOptionInput();
+
+            if (product != null)
+            {
+                var confirm = AnsiConsole.Confirm("Are you sure you want to delete this product?");
+                if (!confirm)
+                    return;
+
+                ProductController.DeleteProduct(product);
+            }
         }
 
         internal static void GetProducts()
@@ -46,12 +54,19 @@ namespace CoffeeShop.PointOfSales.EntityFramework
         static private Product? GetProductOptionInput()
         {
             var products = ProductController.GetProducts();
-            var productsArray = products.Select(p => p.Name).ToArray();
+            var productsArray = products.Select(p => p.Name).ToList();
+            productsArray.Add("Back");
+
             var option = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
                     .Title("Select a product")
                     .AddChoices(productsArray)
             );
+
+            if (option.Equals("Back"))
+            {
+                return null;
+            }
 
             var id = products.Single(x => x.Name == option).Id;
             var product = ProductController.GetProductById(id);
