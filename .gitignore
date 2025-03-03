@@ -366,3 +366,5 @@ CoffeeShop.PointOfSales.EntityFramework/products.db
 CoffeeShop.PointOfSales.EntityFramework/Properties/launchSettings.json
 *.db
 /products.db
+*.db-wal
+*.db-shm
