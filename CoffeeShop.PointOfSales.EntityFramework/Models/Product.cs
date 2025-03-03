@@ -1,4 +1,4 @@
-﻿namespace CoffeeShop.PointOfSales.EntityFramework
+﻿namespace CoffeeShop.PointOfSales.EntityFramework.Models
 {
     public class Product
     {

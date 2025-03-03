@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CoffeeShop.PointOfSales.EntityFramework.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoffeeShop.PointOfSales.EntityFramework
 {

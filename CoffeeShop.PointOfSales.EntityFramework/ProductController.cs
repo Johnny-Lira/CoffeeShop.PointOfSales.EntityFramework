@@ -1,4 +1,5 @@
-﻿using Spectre.Console;
+﻿using CoffeeShop.PointOfSales.EntityFramework.Models;
+using Spectre.Console;
 
 namespace CoffeeShop.PointOfSales.EntityFramework
 {
@@ -9,6 +10,7 @@ namespace CoffeeShop.PointOfSales.EntityFramework
         {
             using var db = new ProductsContext();
             db.Add(new Product { Name = name });
+            
             db.SaveChanges();
         }
 

@@ -1,4 +1,5 @@
-﻿using Spectre.Console;
+﻿using CoffeeShop.PointOfSales.EntityFramework.Models;
+using Spectre.Console;
 
 namespace CoffeeShop.PointOfSales.EntityFramework
 {

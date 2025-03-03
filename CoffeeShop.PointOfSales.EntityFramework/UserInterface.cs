@@ -1,14 +1,58 @@
-﻿using Spectre.Console;
+﻿using CoffeeShop.PointOfSales.EntityFramework.Models;
+using Spectre.Console;
 
 namespace CoffeeShop.PointOfSales.EntityFramework
 {
     static internal class UserInterface
     {
-        internal static void ShowProduct(Product product)
+        static internal void MainMenu()
+        {
+            var isRunning = true;
+
+            while (isRunning)
+            {
+                var option = AnsiConsole.Prompt(
+                    new SelectionPrompt<MenuOptions>()
+                        .Title("What do you want to do?")
+                        .PageSize(10)
+                        .AddChoices(MenuOptions.AddProduct,
+                        MenuOptions.DeleteProduct,
+                        MenuOptions.UpdateProduct,
+                        MenuOptions.ViewProduct,
+                        MenuOptions.ViewAllProducts,
+                        MenuOptions.Quit)
+                );
+
+                switch (option)
+                {
+                    case MenuOptions.AddProduct:
+                        ProductService.InsertProduct();
+                        break;
+                    case MenuOptions.DeleteProduct:
+                        ProductService.DeleteProduct();
+                        break;
+                    case MenuOptions.UpdateProduct:
+                        ProductService.UpdateProduct();
+                        break;
+                    case MenuOptions.ViewProduct:
+                        ProductService.GetProduct();
+                        break;
+                    case MenuOptions.ViewAllProducts:
+                        ProductService.GetProducts();
+                        break;
+                    case MenuOptions.Quit:
+                        isRunning = false;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        static internal void ShowProduct(Product product)
         {
             var panel = new Panel($@"Id: {product.Id} Name: {product.Name}");
             panel.Header = new PanelHeader("Product Info");
-            panel.Padding = new Padding(2,2,2,2);
+            panel.Padding = new Padding(2, 2, 2, 2);
 
             AnsiConsole.Write(panel);
 
