@@ -1,7 +1,8 @@
-﻿using CoffeeShop.PointOfSales.EntityFramework.Models;
+﻿using CoffeeShop.PointOfSales.EntityFramework.Controllers;
+using CoffeeShop.PointOfSales.EntityFramework.Models;
 using Spectre.Console;
 
-namespace CoffeeShop.PointOfSales.EntityFramework
+namespace CoffeeShop.PointOfSales.EntityFramework.Services
 {
     internal class ProductService
     {
@@ -11,7 +12,7 @@ namespace CoffeeShop.PointOfSales.EntityFramework
             {
                 Name = AnsiConsole.Ask<string>("Enter the name of the product"),
                 Price = AnsiConsole.Ask<decimal>("Enter the price of product")
-            }; 
+            };
             ProductController.AddProduct(product);
 
         }
@@ -50,7 +51,7 @@ namespace CoffeeShop.PointOfSales.EntityFramework
             var product = GetProductOptionInput();
             if (product != null)
             {
-                product.Name = AnsiConsole.Confirm("Update name?") 
+                product.Name = AnsiConsole.Confirm("Update name?")
                     ? product.Name = AnsiConsole.Ask<string>("Enter the new name of the product")
                     : product.Name;
 
@@ -80,7 +81,7 @@ namespace CoffeeShop.PointOfSales.EntityFramework
                 return null;
             }
 
-            var id = products.Single(x => x.Name == option).Id;
+            var id = products.Single(x => x.Name == option).ProductId;
             var product = ProductController.GetProductById(id);
 
             return product;

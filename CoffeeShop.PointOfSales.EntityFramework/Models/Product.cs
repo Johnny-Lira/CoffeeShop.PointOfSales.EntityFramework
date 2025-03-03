@@ -1,9 +1,24 @@
-﻿namespace CoffeeShop.PointOfSales.EntityFramework.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
+namespace CoffeeShop.PointOfSales.EntityFramework.Models
 {
-    public class Product
+    [Index(nameof(Name), IsUnique = true)]
+    internal class Product
     {
-        public int Id { get; set; }
+        [Key]
+        public int ProductId { get; set; }
+
+        [Required]
         public required string Name { get; set; }
-        public decimal Price { get; set; }
+
+        [Required]
+        public required decimal Price { get; set; }
+
+        public int CategoryId { get; set; }
+
+        [ForeignKey(nameof(CategoryId))]
+        public Category Category { get; set; }
     }
 }

@@ -8,6 +8,7 @@ namespace CoffeeShop.PointOfSales.EntityFramework
 {
     internal enum MenuOptions
     {
+        AddCategory,
         AddProduct,
         DeleteProduct,
         UpdateProduct,

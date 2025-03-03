@@ -1,4 +1,5 @@
 ﻿using CoffeeShop.PointOfSales.EntityFramework.Models;
+using CoffeeShop.PointOfSales.EntityFramework.Services;
 using Spectre.Console;
 
 namespace CoffeeShop.PointOfSales.EntityFramework
@@ -15,16 +16,21 @@ namespace CoffeeShop.PointOfSales.EntityFramework
                     new SelectionPrompt<MenuOptions>()
                         .Title("What do you want to do?")
                         .PageSize(10)
-                        .AddChoices(MenuOptions.AddProduct,
-                        MenuOptions.DeleteProduct,
-                        MenuOptions.UpdateProduct,
-                        MenuOptions.ViewProduct,
-                        MenuOptions.ViewAllProducts,
-                        MenuOptions.Quit)
+                        .AddChoices(
+                            MenuOptions.AddCategory,
+                            MenuOptions.AddProduct,
+                            MenuOptions.DeleteProduct,
+                            MenuOptions.UpdateProduct,
+                            MenuOptions.ViewProduct,
+                            MenuOptions.ViewAllProducts,
+                            MenuOptions.Quit)
                 );
 
                 switch (option)
                 {
+                    case MenuOptions.AddCategory:
+                        CategoryService.InsertCategory();
+                        break;
                     case MenuOptions.AddProduct:
                         ProductService.InsertProduct();
                         break;
@@ -50,9 +56,11 @@ namespace CoffeeShop.PointOfSales.EntityFramework
         }
         static internal void ShowProduct(Product product)
         {
-            var panel = new Panel($@"Id: {product.Id} Name: {product.Name}");
-            panel.Header = new PanelHeader("Product Info");
-            panel.Padding = new Padding(2, 2, 2, 2);
+            var panel = new Panel($@"Id: {product.ProductId} Name: {product.Name}")
+            {
+                Header = new PanelHeader("Product Info"),
+                Padding = new Padding(2, 2, 2, 2)
+            };
 
             AnsiConsole.Write(panel);
 
@@ -70,7 +78,7 @@ namespace CoffeeShop.PointOfSales.EntityFramework
 
             foreach (var product in products)
             {
-                table.AddRow(product.Id.ToString(), product.Name, product.Price.ToString());
+                table.AddRow(product.ProductId.ToString(), product.Name, product.Price.ToString());
             }
             AnsiConsole.Write(table);
 
