@@ -5,10 +5,10 @@ namespace CoffeeShop.PointOfSales.EntityFramework
     public class ProductController
     {
 
-        public static void AddProduct(string name)
+        public static void AddProduct(Product product)
         {
             using var db = new ProductsContext();
-            db.Add(new Product { Name = name });
+            db.Add(product);
             db.SaveChanges();
         }
 

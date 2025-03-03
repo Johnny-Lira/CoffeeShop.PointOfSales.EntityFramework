@@ -6,7 +6,12 @@ namespace CoffeeShop.PointOfSales.EntityFramework
     {
         internal static void InsertProduct()
         {
-            ProductController.AddProduct(AnsiConsole.Ask<string>("Enter the name of the product"));
+            var product = new Product()
+            {
+                Name = AnsiConsole.Ask<string>("Enter the name of the product"),
+                Price = AnsiConsole.Ask<decimal>("Enter the price of product")
+            }; 
+            ProductController.AddProduct(product);
 
         }
 
@@ -44,7 +49,13 @@ namespace CoffeeShop.PointOfSales.EntityFramework
             var product = GetProductOptionInput();
             if (product != null)
             {
-                product.Name = AnsiConsole.Ask<string>("Enter the new name of the product");
+                product.Name = AnsiConsole.Confirm("Update name?") 
+                    ? product.Name = AnsiConsole.Ask<string>("Enter the new name of the product")
+                    : product.Name;
+
+                product.Price = AnsiConsole.Confirm("Update price?")
+                    ? product.Price = AnsiConsole.Ask<decimal>("Enter the new price of the product")
+                    : product.Price;
                 ProductController.UpdateProduct(product);
             }
             else

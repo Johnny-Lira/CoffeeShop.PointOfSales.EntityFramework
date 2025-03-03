@@ -22,10 +22,11 @@ namespace CoffeeShop.PointOfSales.EntityFramework
             var table = new Table();
             table.AddColumn("Id");
             table.AddColumn("Name");
+            table.AddColumn("Price");
 
             foreach (var product in products)
             {
-                table.AddRow(product.Id.ToString(), product.Name);
+                table.AddRow(product.Id.ToString(), product.Name, product.Price.ToString());
             }
             AnsiConsole.Write(table);
 

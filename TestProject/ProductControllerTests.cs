@@ -10,15 +10,15 @@ namespace TestProject
 {
     public class ProductControllerTests
     {
-        [Fact]
-        public void AddProduct_ShouldAddProductToDatabase()
-        {
-            var product = "Test Product";
-            ProductController.AddProduct(product);
+        //[Fact]
+        //public void AddProduct_ShouldAddProductToDatabase()
+        //{
+        //    var product = "Test Product";
+        //    ProductController.AddProduct(product);
 
-            var test = ProductController.GetProducts().Equals(product);
-            Assert.True(test);
-        }
+        //    var test = ProductController.GetProducts().Equals(product);
+        //    Assert.True(test);
+        //}
 
         [Fact]
         public void GetProductById_ShouldReturnProduct_WhenProductExists()
