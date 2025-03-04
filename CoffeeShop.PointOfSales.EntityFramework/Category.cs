@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using CoffeeShop.PointOfSales.EntityFramework.Models;
 
 namespace CoffeeShop.PointOfSales.EntityFramework
 {
-    internal class Category
+    [Table("Categories")]
+    public class Category
     {
         [Key]
         public int Id { get; set; }

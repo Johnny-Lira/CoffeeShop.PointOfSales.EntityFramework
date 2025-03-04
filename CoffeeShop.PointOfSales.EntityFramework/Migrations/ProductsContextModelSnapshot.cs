@@ -28,7 +28,7 @@ namespace CoffeeShop.PointOfSales.EntityFramework.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("CoffeeShop.PointOfSales.EntityFramework.Models.Product", b =>

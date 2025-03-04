@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoffeeShop.PointOfSales.EntityFramework.Migrations
 {
     [DbContext(typeof(ProductsContext))]
-    [Migration("20250303181619_Create-Category")]
-    partial class CreateCategory
+    [Migration("20250303234753_Add-Category")]
+    partial class AddCategory
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,7 +31,7 @@ namespace CoffeeShop.PointOfSales.EntityFramework.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("CoffeeShop.PointOfSales.EntityFramework.Models.Product", b =>

@@ -9,5 +9,12 @@
             db.Categories.Add(category);
             db.SaveChanges();
         }
+
+        internal static List<Category> GetCategories()
+        {
+            using var db = new ProductsContext();
+
+            return db.Categories.ToList();
+        }
     }
 }

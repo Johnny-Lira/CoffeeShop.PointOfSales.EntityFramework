@@ -5,7 +5,7 @@
 namespace CoffeeShop.PointOfSales.EntityFramework.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateCategory : Migration
+    public partial class AddCategory : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -42,7 +42,7 @@ namespace CoffeeShop.PointOfSales.EntityFramework.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateTable(
-                name: "Category",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -51,7 +51,7 @@ namespace CoffeeShop.PointOfSales.EntityFramework.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateIndex(
@@ -66,10 +66,10 @@ namespace CoffeeShop.PointOfSales.EntityFramework.Migrations
                 unique: true);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Products_Category_CategoryId",
+                name: "FK_Products_Categories_CategoryId",
                 table: "Products",
                 column: "CategoryId",
-                principalTable: "Category",
+                principalTable: "Categories",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -78,11 +78,11 @@ namespace CoffeeShop.PointOfSales.EntityFramework.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Products_Category_CategoryId",
+                name: "FK_Products_Categories_CategoryId",
                 table: "Products");
 
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "Categories");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Products",

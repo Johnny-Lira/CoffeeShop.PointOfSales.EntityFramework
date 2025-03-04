@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace CoffeeShop.PointOfSales.EntityFramework.Models
 {
     [Index(nameof(Name), IsUnique = true)]
-    internal class Product
+    public class Product
     {
         [Key]
         public int ProductId { get; set; }

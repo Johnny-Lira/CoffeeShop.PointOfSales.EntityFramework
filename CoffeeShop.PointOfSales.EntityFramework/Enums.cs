@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CoffeeShop.PointOfSales.EntityFramework
+﻿namespace CoffeeShop.PointOfSales.EntityFramework
 {
     internal enum MenuOptions
     {
         AddCategory,
+        ViewAllCategories,
         AddProduct,
         DeleteProduct,
         UpdateProduct,

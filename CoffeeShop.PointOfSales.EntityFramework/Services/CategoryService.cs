@@ -19,5 +19,11 @@ namespace CoffeeShop.PointOfSales.EntityFramework.Services
 
             CategoryController.AddCategory(category);
         }
+
+        internal static void GetCategories()
+        {
+            var categories = CategoryController.GetCategories();
+            UserInterface.ShowCategoryTable(categories);
+        }
     }
 }

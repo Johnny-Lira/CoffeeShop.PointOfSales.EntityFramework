@@ -18,6 +18,7 @@ namespace CoffeeShop.PointOfSales.EntityFramework
                         .PageSize(10)
                         .AddChoices(
                             MenuOptions.AddCategory,
+                            MenuOptions.ViewAllCategories,
                             MenuOptions.AddProduct,
                             MenuOptions.DeleteProduct,
                             MenuOptions.UpdateProduct,
@@ -30,6 +31,9 @@ namespace CoffeeShop.PointOfSales.EntityFramework
                 {
                     case MenuOptions.AddCategory:
                         CategoryService.InsertCategory();
+                        break;
+                    case MenuOptions.ViewAllCategories:
+                        CategoryService.GetCategories();
                         break;
                     case MenuOptions.AddProduct:
                         ProductService.InsertProduct();
@@ -79,6 +83,25 @@ namespace CoffeeShop.PointOfSales.EntityFramework
             foreach (var product in products)
             {
                 table.AddRow(product.ProductId.ToString(), product.Name, product.Price.ToString());
+            }
+            AnsiConsole.Write(table);
+
+            Console.WriteLine("Press any key to continue");
+            Console.ReadLine();
+            Console.Clear();
+        }
+
+        static internal void ShowCategoryTable(List<Category> categories)
+        {
+            var table = new Table();
+            table.AddColumn("Id");
+            table.AddColumn("Category");
+
+            foreach (var category in categories)
+            {
+                table.AddRow(
+                    category.Id.ToString(),
+                    category.Name);
             }
             AnsiConsole.Write(table);
 

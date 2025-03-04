@@ -5,11 +5,11 @@ namespace CoffeeShop.PointOfSales.EntityFramework
 {
     public class ProductsContext : DbContext
     {
-        internal DbSet<Category> Categories { get; set; }
-        internal DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=products.db");
+            optionsBuilder.UseSqlite("Data Source=DB/products.db");
         }
     }
 }
