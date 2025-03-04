@@ -11,7 +11,8 @@ namespace CoffeeShop.PointOfSales.EntityFramework.Services
             var product = new Product()
             {
                 Name = AnsiConsole.Ask<string>("Enter the name of the product"),
-                Price = AnsiConsole.Ask<decimal>("Enter the price of product")
+                Price = AnsiConsole.Ask<decimal>("Enter the price of product"),
+                CategoryId = CategoryService.GetCategoryOptionInput().CategoryId
             };
             ProductController.AddProduct(product);
 

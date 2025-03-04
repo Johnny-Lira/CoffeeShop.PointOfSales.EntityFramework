@@ -100,7 +100,7 @@ namespace CoffeeShop.PointOfSales.EntityFramework
             foreach (var category in categories)
             {
                 table.AddRow(
-                    category.Id.ToString(),
+                    category.CategoryId.ToString(),
                     category.Name);
             }
             AnsiConsole.Write(table);
