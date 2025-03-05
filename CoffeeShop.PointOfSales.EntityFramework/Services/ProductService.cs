@@ -8,14 +8,20 @@ namespace CoffeeShop.PointOfSales.EntityFramework.Services
     {
         internal static void InsertProduct()
         {
+            var category = CategoryService.GetCategoryOptionInput();
+            if (category == null)
+            {
+                AnsiConsole.MarkupLine("[red]Category not found[/]");
+                return;
+            }
+
             var product = new Product()
             {
                 Name = AnsiConsole.Ask<string>("Enter the name of the product"),
                 Price = AnsiConsole.Ask<decimal>("Enter the price of product"),
-                CategoryId = CategoryService.GetCategoryOptionInput().CategoryId
+                CategoryId = category.CategoryId
             };
             ProductController.AddProduct(product);
-
         }
 
         internal static void DeleteProduct()

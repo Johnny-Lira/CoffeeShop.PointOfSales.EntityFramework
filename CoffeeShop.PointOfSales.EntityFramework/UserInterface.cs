@@ -12,6 +12,7 @@ namespace CoffeeShop.PointOfSales.EntityFramework
 
             while (isRunning)
             {
+                Console.Clear();
                 var option = AnsiConsole.Prompt(
                     new SelectionPrompt<MenuOptions>()
                         .Title("What do you want to do?")
@@ -60,7 +61,11 @@ namespace CoffeeShop.PointOfSales.EntityFramework
         }
         static internal void ShowProduct(Product product)
         {
-            var panel = new Panel($@"Id: {product.ProductId} Name: {product.Name}")
+            var panel = new Panel(
+                $@"Id: {product.ProductId}
+Name: {product.Name} 
+Price: {product.Price} 
+Category: {product.Category.Name}")
             {
                 Header = new PanelHeader("Product Info"),
                 Padding = new Padding(2, 2, 2, 2)
@@ -79,10 +84,16 @@ namespace CoffeeShop.PointOfSales.EntityFramework
             table.AddColumn("Id");
             table.AddColumn("Name");
             table.AddColumn("Price");
+            table.AddColumn("Category");
 
             foreach (var product in products)
             {
-                table.AddRow(product.ProductId.ToString(), product.Name, product.Price.ToString());
+                table.AddRow(
+                    product.ProductId.ToString(),
+                    product.Name,
+                    product.Price.ToString(),
+                    product.Category.Name
+                    );
             }
             AnsiConsole.Write(table);
 

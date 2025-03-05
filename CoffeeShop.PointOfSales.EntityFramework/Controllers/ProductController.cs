@@ -1,4 +1,5 @@
 ﻿using CoffeeShop.PointOfSales.EntityFramework.Models;
+using Microsoft.EntityFrameworkCore;
 using Spectre.Console;
 
 namespace CoffeeShop.PointOfSales.EntityFramework.Controllers
@@ -24,7 +25,9 @@ namespace CoffeeShop.PointOfSales.EntityFramework.Controllers
         public static Product? GetProductById(int id)
         {
             using var db = new ProductsContext();
-            var product = db.Products.SingleOrDefault(p => p.ProductId == id);
+            var product = db.Products
+                .Include(x => x.Category)
+                .SingleOrDefault(p => p.ProductId == id);
             return product;
         }
 
@@ -37,7 +40,9 @@ namespace CoffeeShop.PointOfSales.EntityFramework.Controllers
         {
             using var db = new ProductsContext();
 
-            var products = db.Products.ToList();
+            var products = db.Products
+                .Include(x => x.Category)
+                .ToList();
 
             return products;
         }
