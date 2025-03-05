@@ -3,6 +3,7 @@
     internal enum MenuOptions
     {
         AddCategory,
+        DeleteCategory,
         ViewAllCategories,
         AddProduct,
         DeleteProduct,

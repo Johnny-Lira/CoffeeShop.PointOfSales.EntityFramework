@@ -19,6 +19,7 @@ namespace CoffeeShop.PointOfSales.EntityFramework
                         .PageSize(10)
                         .AddChoices(
                             MenuOptions.AddCategory,
+                            MenuOptions.DeleteCategory,
                             MenuOptions.ViewAllCategories,
                             MenuOptions.AddProduct,
                             MenuOptions.DeleteProduct,
@@ -32,6 +33,9 @@ namespace CoffeeShop.PointOfSales.EntityFramework
                 {
                     case MenuOptions.AddCategory:
                         CategoryService.InsertCategory();
+                        break;
+                    case MenuOptions.DeleteCategory:
+                        CategoryService.DeleteCategory();
                         break;
                     case MenuOptions.ViewAllCategories:
                         CategoryService.GetCategories();

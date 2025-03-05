@@ -43,5 +43,24 @@ namespace CoffeeShop.PointOfSales.EntityFramework.Services
 
             return category;
         }
+
+        internal static void DeleteCategory()
+        {
+            var category = GetCategoryOptionInput();
+
+            if (category == null)
+            {
+                AnsiConsole.MarkupLine("[red]Category not found[/]");
+                return;
+            }
+
+            var confirm = AnsiConsole.Confirm("Are you sure you want to delete this category?");
+            
+            if (!confirm)
+                return;
+
+            CategoryController.DeleteCategory(category);
+
+        }
     }
 }

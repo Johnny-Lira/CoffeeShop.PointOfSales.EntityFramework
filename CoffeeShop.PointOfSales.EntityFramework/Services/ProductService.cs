@@ -28,14 +28,18 @@ namespace CoffeeShop.PointOfSales.EntityFramework.Services
         {
             var product = GetProductOptionInput();
 
-            if (product != null)
+            if (product == null)
             {
-                var confirm = AnsiConsole.Confirm("Are you sure you want to delete this product?");
-                if (!confirm)
-                    return;
+                AnsiConsole.MarkupLine("[red]Product not found[/]");
+                return;
+            }
+
+            var confirm = AnsiConsole.Confirm("Are you sure you want to delete this product?");
+
+            if (!confirm)
+                return;
 
                 ProductController.DeleteProduct(product);
-            }
         }
 
         internal static void GetProducts()

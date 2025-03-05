@@ -27,6 +27,13 @@ namespace CoffeeShop.PointOfSales.EntityFramework.Controllers
             return db.Categories.ToList();
         }
 
+        internal static void DeleteCategory(Category category)
+        {
+            using var db = new ProductsContext();
+            db.Categories.Remove(category);
+            db.SaveChanges();
+        }
+
 
     }
 }
